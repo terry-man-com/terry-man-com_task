@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+.task-contents h4 {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+.task-contents p {
+    margin-top: 0;
+}
+.task-wrapper ul {
+    padding: 0;
+}
+
+.task-wrapper li {
+    list-style-type: none;
+}
