@@ -1,5 +1,21 @@
 @charset "utf-8";
 
+.task-wrapper {
+    width: 300px;
+}
+.task-items {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.task-items a {
+    flex-grow: 1; /* タイトル部分が残りのスペースを埋める */
+    margin-right: 10px; /* 削除ボタンとの間に余白を追加 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .task-contents h4 {
     font-weight: normal;
     margin-bottom: 0;
@@ -13,4 +29,12 @@
 
 .task-wrapper li {
     list-style-type: none;
+}
+
+.button-area{
+    display: flex;
+}
+
+.button-area > *:not(:last-child) {
+    margin-right: 10px;
 }

@@ -21,6 +21,27 @@ class TaskController extends Controller
         return view('tasks.show', ['task' => $task]);
     }
 
+    // タスク編集ページへ移動
+    public function edit($id)
+    {
+        $task = Task::find($id);
+        return view('tasks.edit', ['task' => $task]);
+    }
+
+    // update(更新)処理
+    public function update(Request $request, $id)
+    {
+        $task = Task::find($id);
+
+        $task->title = $request->title;
+        $task->body  = $request->body;
+
+        $task->save();
+
+        return redirect('/tasks');
+    }
+
+    // Create Task
     public function store(Request $request)
     {
         $task = new Task;
@@ -31,5 +52,15 @@ class TaskController extends Controller
         $task->save();
 
         return redirect('/tasks');
+    }
+
+    // 削除機能
+    public function destroy($id)
+    {
+        $task = Task::find($id);
+        $task->delete();
+
+        return redirect('/tasks');
+
     }
 }

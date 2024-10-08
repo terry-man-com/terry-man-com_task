@@ -18,8 +18,12 @@
             </div>
             <div class="button-area">
                 <button onclick="location.href='{{ route('tasks.index') }}'">一覧に戻る</button>
-                <button>編集する</button>
-                <button>削除する</button>
+                <button onclick="location.href='{{ route('tasks.edit', $task) }}'">編集する</button>
+                <form action="{{ route('tasks.destroy', $task) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" value="削除する" onclick="if(!confirm('削除しますか？')){return false};">
+                </form>
             </div>
     </div>
 </body>

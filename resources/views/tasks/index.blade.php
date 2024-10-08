@@ -13,8 +13,13 @@
             <div class="task-wrapper">
                 <ul>
                     @foreach ($tasks as $task)
-                    <li>    
+                    <li class="task-items">    
                         <a href="{{ route('tasks.show', $task) }}">{{ $task->title }}</a>
+                        <form action="{{ route('tasks.destroy', $task) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <input type="submit" value="削除する" onclick="if(!confirm('削除しますか？')){return false};">
+                        </form>
                     </li>
                     @endforeach
                 </ul>
