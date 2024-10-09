@@ -38,3 +38,11 @@
 .button-area > *:not(:last-child) {
     margin-right: 10px;
 }
+
+.error {
+    color: red;
+}
+
+.error ul {
+    padding-left: 20px;
+}

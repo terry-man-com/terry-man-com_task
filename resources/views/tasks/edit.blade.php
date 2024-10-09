@@ -10,21 +10,33 @@
 <body>
     <div class="wrapper">
         <h1>タスク編集</h1>
+            @if ($errors->any())
+                <div class="error">
+                    <p>
+                        <b>{{ count($errors) }}件のエラーがあります。</b>
+                    </p>
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
         <div class="edit-wrapper">
             <form action="{{ route('tasks.update', $task) }}" method="post">
                 @csrf
                 @method('PATCH')
                 <p>
                     <label for="title">タイトル</label><br>
-                    <input type="text" name="title" id="id" value="{{ $task->title }}">
+                    <input type="text" name="title" id="id" value="{{ old('title', $task->title) }}">
                 </p>
                 <p>
                     <label for="body">本文</label><br>
-                    <textarea name="body" id="body">{{ $task->body }}</textarea>
+                    <textarea name="body" id="body">{{ old('body', $task->body) }}</textarea>
                 </p>
                 <div class="button-area">
                     <input type="submit" value="更新">
-                    <button onclick="location.href='{{ route('tasks.show', $task) }}'">詳細に戻る</button>
+                    <button type="button" onclick="location.href='{{ route('tasks.show', $task) }}'">詳細に戻る</button>
                 </div>
             </form>
         </div>
